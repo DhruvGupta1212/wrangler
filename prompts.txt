@@ -1,0 +1,54 @@
+Prompt 1:
+"How do I add a custom token type to a parser in a Java ANTLR project?"
+
+Prompt 2:
+"Generate a ByteSize class that implements a Token interface and returns byte values from strings like '2GB' or '500MB'."
+
+Prompt 3:
+"What are the required modifications in TokenType.java to add BYTE_SIZE and TIME_DURATION?"
+
+Prompt 4:
+"How do I integrate new token types like ByteSize and TimeDuration into an ANTLR-based visitor in Java?"
+
+Prompt 5:
+"Where should I create a new custom directive class in a Java-based ANTLR project like Wrangler?"
+
+Prompt 6:
+"Generate a directive class for aggregate-stats in Wrangler that calculates the total and average from ByteSize and TimeDuration tokens."
+
+Prompt 7:
+"What changes do I need to make in META-INF/services/io.cdap.wrangler.api.Directive to register a new directive class?"
+
+Prompt 8:
+"I modified various files to support new token types and directives, but my Maven build is failing with checkstyle errors. How do I bypass or fix them?"
+
+Prompt 9:
+"Maven tests are failing due to inaccessible native methods with PowerMock. How do I skip tests temporarily to check build success?"
+
+Prompt 10:
+"How do I document AI-assisted development prompts in a project repository according to academic or compliance requirements?"
+
+Prompt 11:
+"Help me implement an AggregateStats directive that can handle byte sizes and time durations with proper unit conversions. The directive should use TransientStore with GLOBAL scope to maintain state across rows."
+
+Prompt 12:
+"Create comprehensive test cases for the AggregateStats directive including:
+- Basic aggregation with simple units
+- Mixed unit handling (KB/MB/GB, ms/s/h)
+- Empty input handling
+- Large number handling (TB, 24h)
+- Invalid syntax and error cases"
+
+Prompt 13:
+"Help me fix the following issues in the test files:
+- Add Apache license headers
+- Fix import ordering
+- Correct type casting in test assertions
+- Add proper whitespace and newlines
+- Fix line length issues"
+
+Prompt 14:
+"Help me debug the test case for mixed units in AggregateStatsIntegrationTest. The test is failing with unexpected results for unit conversions between KB, MB, GB, and B."
+
+Prompt 15:
+"Explain how the ByteSize and TimeDuration classes handle unit conversions and how they integrate with the AggregateStats directive."
