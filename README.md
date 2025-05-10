@@ -31,6 +31,46 @@ More [here](wrangler-docs/upcoming-features.md) on upcoming features.
   * A new capability that allows CDAP Administrators to **restrict the directives** that are accessible to their users.
 More information on configuring can be found [here](wrangler-docs/exclusion-and-aliasing.md)
 
+## New Parser and Aggregation Features
+
+The following new features have been added to enhance data processing capabilities:
+
+### Byte Size and Time Duration Parsers
+
+Two new parsers have been added to handle byte sizes and time durations:
+
+1. **Byte Size Parser**
+   - Parses byte size values with units (e.g., "10KB", "1.5MB", "2GB")
+   - Converts all values to canonical bytes
+   - Supports common byte units: B, KB, MB, GB, TB, PB
+   - Example: `parse-as-byte-size :data_size`
+
+2. **Time Duration Parser**
+   - Parses time duration values with units (e.g., "5ms", "2.1s", "1.5m")
+   - Converts all values to canonical nanoseconds
+   - Supports common time units: ns, μs, ms, s, m, h
+   - Example: `parse-as-time-duration :response_time`
+
+### Aggregate Stats Directive
+
+A new aggregation directive has been added to process byte sizes and time durations:
+
+- **Aggregate Stats**
+  - Aggregates byte sizes and time durations into totals or averages
+  - Supports multiple aggregation types (total, average, median, p95, p99)
+  - Allows specification of output units
+  - Example usage:
+    ```
+    aggregate-stats :data_transfer_size :response_time total_size_mb total_time_sec
+    ```
+  - Features:
+    - Automatic unit conversion
+    - Support for different aggregation types
+    - Configurable output units
+    - Error handling for invalid values
+
+For more detailed information about these features, please refer to their respective documentation pages.
+
 ## Demo Videos and Recipes
 
 Videos and Screencasts are best way to learn, so we have compiled simple, short screencasts that shows some of the features of Data Prep. Additional videos can be found [here](https://www.youtube.com/playlist?list=PLhmsf-NvXKJn-neqefOrcl4n7zU4TWmIr)
@@ -83,6 +123,8 @@ These directives are currently available:
 | [Parse XML To JSON](wrangler-docs/directives/parse-xml-to-json.md)              | Parses an XML document into a JSON structure                     |
 | [Parse as Currency](wrangler-docs/directives/parse-as-currency.md)              | Parses a string representation of currency into a number.        |
 | [Parse as Datetime](wrangler-docs/directives/parse-as-datetime.md)              | Parses strings with datetime values to CDAP datetime type        |
+| [Parse as Byte Size](wrangler-docs/directives/parse-as-byte-size.md)            | Parses byte size values (e.g., "10KB", "1.5MB") into canonical bytes |
+| [Parse as Time Duration](wrangler-docs/directives/parse-as-time-duration.md)     | Parses time duration values (e.g., "5ms", "2.1s") into canonical nanoseconds |
 | **Output Formatters**                                                  |                                                                  |
 | [Write as CSV](wrangler-docs/directives/write-as-csv.md)                        | Converts a record into CSV format                                |
 | [Write as JSON](wrangler-docs/directives/write-as-json-map.md)                  | Converts the record into a JSON map                              |
@@ -163,6 +205,8 @@ These directives are currently available:
 | [DDL](wrangler-docs/functions/ddl-functions.md)                                 | Functions that can manipulate definition of data                 |
 | [JSON](wrangler-docs/functions/json-functions.md)                               | Functions that can be useful in transforming your data           |
 | [Types](wrangler-docs/functions/type-functions.md)                              | Functions for detecting the type of data                         |
+| **Aggregations**                                                      |                                                                  |
+| [Aggregate Stats](wrangler-docs/directives/aggregate-stats.md)                  | Aggregates byte sizes and time durations into totals or averages |
 
 ## Performance
 
