@@ -64,6 +64,8 @@ directive
     | stringList
     | numberRanges
     | properties
+    | byteSize       // Added support for byte size
+    | timeDuration   // Added support for time duration
   )*?
   ;
 
@@ -140,7 +142,7 @@ numberRange
  ;
 
 value
- : String | Number | Column | Bool
+ : String | Number | Column | Bool  | BYTE_SIZE | TIME_DURATION  // Modified to include new token types
  ;
 
 ecommand
@@ -166,6 +168,16 @@ number
 bool
  : Bool
  ;
+
+// New parser rules for byte size and time duration
+byteSize
+ : BYTE_SIZE
+ ;
+
+timeDuration
+ : TIME_DURATION
+ ;
+
 
 condition
  : OBrace (~CBrace | condition)* CBrace
@@ -246,6 +258,32 @@ Pipe     : '|';
 BackSlash: '\\';
 Dollar   : '$';
 Tilde    : '~';
+
+// CHANGES 
+
+BYTE_SIZE
+: Number BYTE_UNIT
+;
+
+TIME_DURATION 
+: Number TIME_UNIT
+;
+
+fragment 
+BYTE_UNIT : [Bb]
+| [Kk][Bb]   // kilobytes
+ | [Mm][Bb]            // megabytes
+ | [Gg][Bb]            // gigabytes
+ | [Tt][Bb]            // terabytes
+ ;
+
+fragment
+TIME_UNIT : [Nn][Ss]   //nanosecond
+| [Mm][Ss]            // milliseconds
+ | [Ss]                // seconds
+ | [Mm][Ii][Nn]        // minutes
+ | [Hh]                // hours
+ ;
 
 
 Bool
